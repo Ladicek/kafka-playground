@@ -10,7 +10,7 @@ import java.util.concurrent.CompletionStage;
 public class QuarkusTwitterConsumer {
     @Incoming("tweets-consumer")
     public CompletionStage<Void> consume(KafkaRecord<String, String> message) {
-        System.out.println("consumed message from partition " + message.getPartition());
+        System.out.println("consumed message from partition " + message.getPartition() + ": " + message.getPayload());
         return message.ack();
     }
 }
